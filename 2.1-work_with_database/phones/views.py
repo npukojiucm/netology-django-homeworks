@@ -17,10 +17,10 @@ def show_catalog(request):
         'max_price': Phone.objects.all().order_by('-price'),
     }
 
-    if sort is None:
-        phones = Phone.objects.all()
-    else:
+    if sort in sort_rule.keys():
         phones = sort_rule[sort]
+    else:
+        phones = Phone.objects.all()
 
     context = {
         'phones': phones,
