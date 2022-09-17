@@ -1,0 +1,136 @@
+GET http://localhost:8000/api/v1/stocks/?search=каб
+Content-Type: application/json
+
+<> 2022-09-17T214922-1.200.json
+
+###
+
+GET http://localhost:8000/api/v1/stocks/?products=2
+Content-Type: application/json
+
+<> 2022-09-17T214922.200.json
+
+###
+
+GET http://localhost:8000/api/v1/stocks/
+Content-Type: application/json
+
+<> 2022-09-17T214921.200.json
+
+###
+
+PATCH http://localhost:8000/api/v1/stocks/4/
+Content-Type: application/json
+
+{
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 100,
+      "price": 130.80
+    },
+    {
+      "product": 3,
+      "quantity": 243,
+      "price": 145
+    }
+  ]
+}
+
+<> 2022-09-17T214921.404.json
+
+###
+
+POST http://localhost:8000/api/v1/stocks/
+Content-Type: application/json
+
+{
+  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "positions": [
+    {
+      "product": 2,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 3,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+<> 2022-09-17T214921.201.json
+
+###
+
+GET http://localhost:8000/api/v1/products/?search=помидор
+Content-Type: application/json
+
+<> 2022-09-17T214920-1.200.json
+
+###
+
+DELETE http://localhost:8000/api/v1/products/1/
+Content-Type: application/json
+
+###
+
+PATCH http://localhost:8000/api/v1/products/1/
+Content-Type: application/json
+
+{
+  "description": "Самые сочные и ароматные помидорки"
+}
+
+<> 2022-09-17T214920.200.json
+
+###
+
+GET http://localhost:8000/api/v1/products/
+Content-Type: application/json
+
+<> 2022-09-17T214919.200.json
+
+###
+
+POST http://localhost:8000/api/v1/products/
+Content-Type: application/json
+
+{
+  "title": "Помидор",
+  "description": "Лучшие помидоры на рынке"
+}
+
+<> 2022-09-17T214919.201.json
+
+###
+
+GET http://localhost:8000/api/v1/stocks/?search=каб
+Content-Type: application/json
+
+<> 2022-09-17T214910.200.json
+
+###
+
+GET http://localhost:8000/api/v1/stocks/
+Content-Type: application/json
+
+<> 2022-09-17T214738.200.json
+
+###
+
+GET http://localhost:8000/api/v1/stocks/
+Content-Type: application/json
+
+<> 2022-09-17T214727.200.json
+
+###
+
+GET http://localhost:8000/api/v1/stocks/
+Content-Type: application/json
+
+<> 2022-09-17T214631.200.json
+
+###
+
