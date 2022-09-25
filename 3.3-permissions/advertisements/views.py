@@ -9,7 +9,7 @@ from advertisements.serializers import AdvertisementSerializer
 
 
 class AdvAdvertisementFilterSet(FilterSet):
-    created_ad = DateFromToRangeFilter()
+    created_at = DateFromToRangeFilter()
 
     class Meta:
         model = Advertisement
