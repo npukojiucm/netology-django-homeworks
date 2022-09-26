@@ -34,17 +34,27 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         # Простановка значения поля создатель по-умолчанию.
         # Текущий пользователь является создателем объявления
         # изменить или переопределить его через API нельзя.
-        # обратите внимание на `context` – он выставляется автоматически
+        # Обратите внимание на `context` – он выставляется автоматически
         # через методы ViewSet.
-        # само поле при этом объявляется как `read_only=True`
+        # Само поле при этом объявляется как `read_only=True`
         validated_data["creator"] = self.context["request"].user
         return super().create(validated_data)
 
     def validate(self, data):
-        user = self.context["request"].user
-        count_open_adv = Advertisement.objects.filter(creator=user, status='OPEN').count()
         method = self.context["request"].method
 
-        if count_open_adv >= 10 and method == 'POST':
-            raise ValidationError('There can be no more than 10 open ads')
+        if method == 'POST':
+            user = self.context['request'].user
+            count_open_adv = Advertisement.objects.filter(creator=user, status='OPEN').count()
+
+            if count_open_adv >= 10:
+                raise ValidationError('There can be no more than 10 open ads')
+
+        if method == 'PATCH':
+            pk_adv = self.context['request'].parser_context['kwargs'].get('pk')
+            status_adv = Advertisement.objects.get(id=pk_adv).status
+
+            if status_adv == 'OPEN' == data['status']:
+                raise ValidationError('This ad is already open')
+
         return data
